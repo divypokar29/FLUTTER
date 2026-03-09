@@ -1,0 +1,44 @@
+// structure of dart programing 
+
+online : datrpad.developer
+void main()
+{
+    // block of code ;
+}
+
+
+=>print: print is a function which is used to display appropriate messege on 
+        comsole screen
+
+        using of print function we can sidplay messge on out put screen 
+
+        syntax: 
+
+            print("messge");
+===============================================================================
+
+variable : A name which can store a value 
+
+          using of that variable we can access that value anywhere from program.
+
+          in dart programing using of var keyword we can declare variable.
+
+
+          e.g. 
+
+          void main(){
+            var a = 10;
+            print("value of x = ${a}");
+          }
+
+==============================================================================
+
+datatype : which type of value store in variable
+
+        there are mainly 2 types of datatype
+
+        -> numeric data type => without point value (int {integer}),with point value (float , double)
+
+        -> character datatype => String :using of string data tyoe we can store multiple character values
+
+                           => streing : alwyrepresent by doble quotes.

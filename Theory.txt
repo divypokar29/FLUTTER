@@ -1,0 +1,61 @@
+-> Operationg system 
+       
+        -> Android  : 80%
+        -> IOS      : 20%
+
+
+        2015 : Android studio (Android mobile application + java )(google)
+             : XCODE   (swift programing language )(apple)
+
+-> Hybrid application developer
+
+
+       React native 
+       ->flutter 
+
+-------------------------------------------------------------------
+
+what is flutter ?
+
+-----------------------------
+
+    flutter is application freamwork toolkit which is provide by google
+
+    flutter is a material ui provide fremwerk
+
+    using of flutter we can build mobile application for android ,ios,windows, linux and 
+    we can build web application 
+
+--------------------------------------------------------------------------
+
+-> dart programing
+
+-> Flutter UI : 
+
+        -> widgets
+             e.g. button,radio,checkbox,text.....
+
+        -> Advance widgets 
+            e.g. list,grid,row,colum....
+
+->flutter advance ui:
+              
+        -> navigation drawer , bottom navigation ....
+
+------------------------UI based project ---------------------------------
+
+->Ofline database :
+   
+        -> connection with ofline / local database
+
+-> online databse :
+        
+        -> application connection with application API 
+
+-> clod database :
+
+        -> Firebase (chat application)
+
+-> state managemant :
+
+        -> Getx
