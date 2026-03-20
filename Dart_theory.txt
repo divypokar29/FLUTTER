@@ -42,3 +42,68 @@ datatype : which type of value store in variable
         -> character datatype => String :using of string data tyoe we can store multiple character values
 
                            => streing : alwyrepresent by doble quotes.
+===============================================================================
+
+Conditional statemants ::::
+
+there are 5 types of Conditional statemants
+
+1) if statemant
+2) if..else statemant
+3) else id statemant
+4) nested id statemant
+5) switch statemant
+
+============================================================================
+
+function : function is a block of code that code are 
+
+ used to agian and agian
+
+ using of function we can reduce our code 
+
+ function provide reusability of code 
+
+there are two types of function 
+
+1) build in function 
+2) user defined function 
+
+--------------------------------------------------------------
+
+1) build in function :  function which  is by default available in dart programing 
+
+        e.g. print(),readlinesync(),.. etc..
+
+2) user defined function : function which is defined by user 
+
+        e.g. 
+
+        void main(){
+            print("hello");
+        }
+
+==================================================================
+
+function creation step :::
+
+
+step 1 : function defination :
+
+      <returntype> functionname()
+      {
+        // block of code
+      }
+
+step 2 : function calling :
+
+      functionname();
+
+  -------------------------------------------
+
+  there are 4 categories of function :
+
+  1) function without parameter and without return type
+  2) function with parameter and without return type
+  3) function without parameter and with return type
+  4) function with parameter and with return type
