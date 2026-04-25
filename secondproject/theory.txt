@@ -1,0 +1,138 @@
+
+create project steps :::
+
+---------------------------------------------------
+
+open terminal :
+
+ flutter create <projectname>
+
+ cd <projectname>
+
+ flutter run  -d chrom
+
+ or 
+
+ flutter run
+
+=================================================
+
+MaterialApp : the most use first widget of the application 
+     which is represent googles Material app theme.
+
+
+     MaterialApp is a widget which is bydefult come with some 
+     inbuilt widget like, navigation, theme ,banner etc ...
+
+     by default MaterialApp provide debug banner on.
+
+MaterialApp provide home widget which is represent first screen launching of the application
+
+
+=========================================================================
+debugShowCheckedModeBanner : 
+
+    which is represent debug banner on or off 
+
+    by default MaterialApp provide debug banner on.
+
+
+home : to redirect or launch main screen of the aplliction
+
+
+===================================================================
+
+scaffold : scaffold is a mian layout of the screen 
+
+   which is represent mobile application heder , footer , in mobile 
+
+   we can say that appbar , bottom navigation ,drawer ,body and main more 
+
+   scaffold by default come weith inbuilt widget it provide layout of the 
+   screen.
+
+   syntax.
+
+   scaffold{
+
+   }
+
+==================================================================
+Appbar : appbar is a most important widget of the application 
+
+  which is represent top of the block or we can say that display
+  application title banner
+
+  appbar which contain application title , logo , navigation , actionbutton , and many more
+
+the most important thing which is display in appbar is 
+
+title : display title of application 
+
+backgroudcolor : display background color of appbar
+
+elevation : elevation property of appbar
+
+===================================================================
+
+ widget in flutter 
+
+ -------------------------
+ widget are the core vuilding block of a Flutter application
+ Everything you see on the screem ,from layout structure to individual butto, is a widget
+ Flutter widger system is designed to be flexible and powerfulle , allowing for the creation of highly customized
+
+ ---------------------------------------------------
+ 1> Types of widget
+ widget can be classified into two main categories:
+
+   Stateless widget :
+       Do not maintain state . once built ,their properties can't be changed
+       
+       Example : A simple text lable, icon , or button that does not change upon user interaction
+
+
+   Stateful widget : 
+       Maintain state and can change over time , their appearance can change in response to user input or other 
+       events.
+
+======================================================================================================
+A Container is a versatile widget in flutter that can hold other widgets.
+
+It acts like a box that can contain a single chiled widget and can be customized in mainy ways .
+
+key properties of Container
+
+child : The widget inside the container . it can be any widget (e.g., text , image , Column ,Row , etc.),
+
+Padding : add space inside the container around the child widget.
+
+margin : adds outside the container , separating it from other widgets.
+
+color : sets the background color of the container.
+
+width and height : sets the width and height of the container.
+
+borderRadius : rounds the corners of the container.
+
+BoxDecoration : used to apply more advanced styling to the container , such as borders , gradients , and shadows.
+
+alignment : Controll the position of the child widget inside the container.
+
+constraints : Used to set constraints like minimum or maximum width and height for the container.
+
+decoration : allows you to apply styling like borders , gradients , and shadows to the container.
+
+
+e.g. Container (
+  constraints: BoxConstraints(
+    minHeight: 100,
+    maxWidth: 200,
+    maxHeight: 300,
+    minWidth: 150,
+    child: text("with constraints"),
+  )
+)
+
+
+======================================================================================================
