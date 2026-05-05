@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secondproject/TASK_KBC/Qations_screen_1.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -83,7 +84,14 @@ class LoginScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 2, 12, 65),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QationsScreen(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Log in",
                         style: TextStyle(
