@@ -15,10 +15,7 @@ class _WinscreenState extends State<Winscreen> {
     super.initState();
 
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => QationsScreen2()),
-      );
+      Navigator.pop(context);
     });
   }
 

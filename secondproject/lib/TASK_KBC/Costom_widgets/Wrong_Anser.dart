@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:secondproject/TASK_KBC/Qation_screen_2.dart';
+import 'package:secondproject/TASK_KBC/Qations_screen_1.dart';
 
 class WrongAnser extends StatefulWidget {
   const WrongAnser({super.key});
@@ -14,10 +15,7 @@ class _WrongAnserState extends State<WrongAnser> {
     super.initState();
 
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => QationsScreen2()),
-      );
+      Navigator.pop(context);
     });
   }
 
