@@ -107,3 +107,209 @@ step 2 : function calling :
   2) function with parameter and without return type
   3) function without parameter and with return type
   4) function with parameter and with return type
+
+-------------------------------------------------
+
+list is a collection of data elemnts when set id a collection of data elements but 
+list which is represent by [] braces and set which is represent by {} braces 
+
+
+list is an orderable , indexable
+set is an unordable , unindexable
+
+
+list can contain duplicate elements
+set can contain only unique elements
+
+------------------------------------------------------
+Map : Map is a collection of key and values in pair 
+     
+      map is similer like dictionary in paython programing language 
+       
+      map which is contain key and vaalue in a pair.
+
+      in list we can store single element at single postion but using
+
+      map we can store pair at single position
+
+      map which is represent by {} braces .
+
+      syntax : 
+
+        Map <Keydatatype,valuedatatype> variable = {
+          'key' = value,
+          'key' = value,
+          .
+          .
+
+        };
+
+=====================================================================
+
+
+OOPS : object oriented programing syntax : 
+
+1) class : class is a userdefine keyword .
+
+  which is represent by class keyword .
+
+  syntax : 
+
+  class <classname>()
+  {
+    //calss datamembers 
+    // class members function
+  }
+
+  class is a collection of data member and member function.
+
+2) object : object is an instance of class or we can say that object is a variable of class
+
+  syntax : 
+
+   classname : object;
+
+  =======================================================================
+
+  Function Vs Method : 
+
+  function : function is a block of code  we can call again and again 
+
+  method : method is similer like function which is contain block of code 
+     call again and again.
+
+but function call idependedtly and method calls dependent on object 
+
+in simple language we can say that function declare outside the class and method declare inside the class 
+ so , whenever we want to access method we have to create object.
+
+ ======================================================================
+
+ constructor : constructor is a  special member function 
+   which is same name like class name
+
+   whenever we create object of class it automaticly invoke constructor .
+
+   1) default constructor: when constructor does not contain any parameter its called
+           default constructor
+
+           syntax :
+
+           class classname
+           {
+            constructor(){
+
+            }
+           } 
+
+    2) parameterized constructor : 
+
+       whenn constructor contain parameterized its call parameterized constructor
+
+       which contain this keyword
+
+
+       this => this keyword which is represent current class properties refer.
+
+    3) name constructor : when we want to give unique name to constructor
+
+      syntax:
+
+      class <classname>{
+        <constructurename>.<name>(){
+
+        }
+      }
+
+      when we want to use multiple constructor in same class
+
+
+
+3) Encapsulation : Encapsulation is a powefull concept  of  dart opps concept 
+       which contain data member and member function is single entity
+
+
+       Encapsulation contain getter and setter memthod 
+
+       setter method represent for set value
+       getter method represent for get value
+
+4)incapsulation : 
+
+  4) hierarchical inheritance : 
+
+        class A 
+           |
+           v
+    -------------------
+    |                  |
+    v                  v
+    b                  c
+
+
+  5) hybrid inheritance : 
+      
+       combination of hierarchical and multiple inheritance
+
+          class A 
+             |
+             v
+  -------------------------
+  |                        |
+  v                        v
+  b                        c
+  --------------------------
+            |
+            v
+            d
+=============================================
+
+polymorphism : 
+
+        poly means many and morphisim means form
+
+        polymorphism means many form
+
+        polymorphism is a concept of dart opps concept 
+        which contain many form
+
+        polymorphism contain two types
+
+        1) method overloading (compile time polymorphism)
+        2) method overriding (runtime polymorphism)
+
+        -> method overloading : when method is same name and same parameter
+               syntax :
+
+                 class <classname>{
+                  methodname()
+                  {
+                    
+                  }
+                  methodname()
+                  {
+
+                  }
+                 }
+
+        -> method overriding : when method is same name and different parameter   
+                
+                syntax: 
+
+                class <classname>{
+                  methodname(){
+
+                  }
+                }
+                class <classname> extends classname 
+                {
+                  methodname()
+                  {
+                    
+                  }
+                }
+
+        
+
+        
+            

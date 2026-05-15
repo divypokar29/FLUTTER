@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             height: 150,
             width: 150,
-            child: Image.asset('assest/KBC.png', fit: BoxFit.fill),
+            child: Image.asset('assest/KBC_app_images/KBC.png', fit: BoxFit.fill),
           ),
           SizedBox(height: 20),
           Padding(

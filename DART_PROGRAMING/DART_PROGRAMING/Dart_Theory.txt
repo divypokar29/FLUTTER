@@ -1,0 +1,220 @@
+// structure of dart programing 
+
+online : dartpad.dev
+
+void main()
+{
+  // block of code;
+}
+
+=> print: print is a function which is used to display appropriate message on 
+        console screen. 
+
+        using of print function we can display message on output screen. 
+
+        syntax : 
+
+
+        print("message");
+====================================================
+variable : A name which can store a value 
+
+    using of that variable we can access that value anywhere from program. 
+
+
+    in dart programing using of var keyword we can declare variable. 
+
+=====================================================
+datatype : which type of value store in a variable 
+
+    there are mainly 2 types of datatype 
+
+    -> numeric data type        
+                    |                                           |
+                    V                                           V 
+
+                without point value                         with point value 
+
+                    int (integer)                           float  , double 
+
+    -> character datatype 
+
+                string : using of string data type we can store multiple charcters values
+
+                string always represent by double quotes; 
+                
+========================================
+Conditional statements ::: 
+
+there are 5 types of conditional statements
+
+1) if statement 
+2) if..else statement
+3) else if statement
+4) nested if statement
+5) switch statement 
+
+========================================
+
+Looping statements ::: 
+
+there are 3 types of loop 
+
+1) for loop 
+2) while loop 
+3) do..while loop 
+
+
+1) for loop ::: for loop is a sequence controlled loop 
+
+        which contain 3 counters 
+
+        inintlization 
+        condition 
+        updation. 
+
+    syntax : 
+
+        for(initlization;condition;updation)
+        {
+            statement;
+        }
+
+
+2) while loop : entry controlled loop 
+
+    it check condition at entry level and if condition goes false it will 
+    terminate loop. 
+
+    syntax : 
+
+    inilization;
+    while (condition)
+    {
+        updation;
+        statement;
+    }
+
+3) Do..while loop : 
+
+    syntax : 
+
+    do 
+    {
+        statement;
+        updation;
+    }while (condition);
+
+    do while loop check condition at exit level. 
+
+==============================================
+==============================================
+3) jumping statements ::: 
+
+    1) break 
+    2) continue 
+
+
+1) break : break the loop 
+
+    it will break the loop when we write break (keyword)
+
+=====================================================
+function : function is a block of code that code are 
+    used to again and again 
+
+    using of function we can reduce our code 
+
+    function provide reusability so, we can save our development time. 
+
+there are 2 types of functions 
+
+1) built in function 
+2) user defined function 
+---------------------------------
+1) built in function : function which is by default provide by dart programing 
+
+    e.g.  print()   , readLineSync() .. etc... 
+
+2) userdefined function : 
+
+    which is create by user as per the need and requirements 
+
+
+=================================================
+function creation steps ::: 
+
+step 1 : function defination : 
+
+    <returntype>  functionname()
+    {
+        // block of code 
+    }
+
+step 2 : function calling : when you want to use that function 
+
+    functionname(); 
+
+=====================================================
+there are 4 categories of functions 
+
+1) function without return type and function without parameters 
+
+2) function with parameters and function without return type 
+
+3) function without parameters and function with return type 
+
+4) function with parameters and function with return type. 
+
+
+
+=====================================================
+collection : collection is a most powerfull topic of dart programing language 
+
+    we can store multiple value at specific element position 
+
+1) list : list is a most powerfull concept of collection 
+    which is contain similiar and dis-similar data element at single location 
+
+        list which is orderable and indexable.
+
+        list index always starts from 0 
+
+        list which is represent by [] braces. 
+
+    there are mainly 3 types of list 
+
+    1) growable list : 
+
+        after creation of list we can add and remove elements 
+
+    2) fixed list : 
+
+        create list with specific no. of length and values 
+
+    3) typed list : 
+
+        create list with specific data type 
+
+     
+===========================================
+list is a collection of data elements when set is a collection of data elements but 
+list which is represent by [] braces and set which is represent by {} braces 
+
+list is an orderable , indexable 
+set is an unordable , unindexable 
+
+list can contain duplicate elements 
+set can contain only unique elements
+
+
+
+
+
+
+
+
+
+
+
+    
