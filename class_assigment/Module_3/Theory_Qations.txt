@@ -1,0 +1,59 @@
+ 1> . Explain the difference between Stateless and Stateful widgets with examples
+
+    => Stateless Widget: Stateless Widget is a widget whose data cannot change after it
+       is created. It is used for displaying static content such as text, images,
+       and icons. For example, a welcome message or company logo can be created using a
+       Stateless Widget.
+
+       Stateful Widget: Stateful Widget is a widget whose data can change after it is
+       created. It is used for displaying dynamic content such as counters, forms, and
+       animations. For example, a counter or a form can be created using a Stateful
+       Widget.
+
+2> . Describe the widget lifecycle and how state is managed in Stateful widgets.
+
+    => createState()
+       Called once when the widget is first inserted. Creates the companion State 
+       object.
+
+       initState()
+       Called once after the State is created. Use for subscriptions, controllers, 
+       and initial data fetching.
+
+       didChangeDependencies()
+       Called when an InheritedWidget dependency changes (e.g., Theme, MediaQuery).
+
+       build()
+       Called every time the widget needs to render. Must be pure and fast — no 
+       side effects.
+
+       setState()
+       Marks the widget as dirty and schedules a new build() call with updated 
+       state values.'
+
+       didUpdateWidget()
+       Called when the parent rebuilds and passes new configuration to this widget.
+
+       dispose()
+       Called when the State is permanently removed. Clean up controllers, streams, 
+       and listeners here.
+
+
+3> .  List and describe five common Flutter layout widgets (e.g., Container, Column,
+      Row).
+
+      => Container
+         A versatile widget used for styling (padding, margin, color, decoration) and
+         positioning other widgets.
+
+         Column
+         Arranges child widgets vertically in a single column.
+
+         Row
+         Arranges child widgets horizontally in a single row.
+
+         Stack
+         Allows widgets to overlap each other, with the last widget on top.
+
+         ListView
+         Displays a scrollable list of widgets, either linear or grid.
