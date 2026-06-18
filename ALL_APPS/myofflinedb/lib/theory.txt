@@ -1,0 +1,23 @@
+Database : Database is a collection of data 
+          which is contain multiple data at single location
+
+
+in flutter we have sqflite library which is provide 
+light weight database .
+
+flutter : sqflite 
+android : sqlite 
+ios : sqlite 
+-------------------------------
+
+before start with ofline database we have a\to install 
+sqflite library which is provide functionality to handal database.
+
+path : path library provide location of database.
+
+#flutter pub add sqflite
+#flutter pub add path 
+
+
+=>for folder cretion in terminal
+->mkdir lib/widgets
