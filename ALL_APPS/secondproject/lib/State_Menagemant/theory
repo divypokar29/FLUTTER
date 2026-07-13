@@ -1,0 +1,42 @@
+
+
+state menagement :  
+       
+       without referesh ui change state of widget 
+
+       there are many liberaries are available for state management.
+
+
+  most popular liberariy is getx
+
+  getx is easy to understand and ligte weight state management liberariy
+
+
+  e.g.
+
+  Home
+  deshbord
+  Profile
+  contact us 
+  settings
+
+  name:
+
+
+setstate (() => {
+
+}) rebuild widget
+
+
+Getx : provider 
+
+   1) statement management
+   2) Navigation 
+   3) depedency injection
+
+
+   janki_nakrani5736
+   Divy_4657@
+
+
+   
