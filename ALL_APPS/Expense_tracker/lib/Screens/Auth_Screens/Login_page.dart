@@ -3,6 +3,7 @@ import 'package:expense_tracker/Screens/Auth_Screens/Registration_screen.dart';
 import 'package:expense_tracker/Screens/Deshbord_screen.dart';
 import 'package:expense_tracker/Services/Auth_service.dart';
 import 'package:expense_tracker/Services/shared_pref_service.dart';
+import 'package:expense_tracker/Widgets/Bottom_Navigation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       ).showSnackBar(SnackBar(content: Text("Login Successful")));
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Dashbordscreen()),
+        MaterialPageRoute(builder: (context) => BottomNavigationWidget()),
       );
     } on FirebaseAuthException catch (e) {
       String message = "";
