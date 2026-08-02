@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               trailing: Column(
                                 children: [
                                   Text("Stock :${product.productqty}"),
-                                  Text("Stock :${product.productcategory}"),
+                                  Text("${product.productcategory}"),
                                 ],
                               ),
                             ),
