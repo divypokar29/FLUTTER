@@ -1,0 +1,39 @@
+firebase is a platform which is provide all 
+    service releted to databse , deployment , storage , documents and all at one place.
+its easy to understand and learn.
+
+its easy to configure.
+
+
+-----------------------------------------------
+
+step1 : opne account in firebase
+
+step 2 : crete project
+
+step 3 : click on add app
+
+step 4 : chose flutter 
+
+step 5 : install flutterFireCLI
+
+         before start this make sure node js 18+ version required 
+         install node js from official website 
+
+         npm : node package manager
+
+         open powershell in admin mode 
+
+         # npm install -g firebase-tools
+
+         fore the securty porpose 
+
+         # Set-ExecutionPolicy RemoteSigned - Scope CurrentUser
+
+         # dart pub global avtivate flutterFire_CLI
+
+         # firebase login
+
+         # flutter pub add firebase_auth
+
+         # flutter pub add firebase_core
