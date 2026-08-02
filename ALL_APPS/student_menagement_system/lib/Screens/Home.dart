@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:student_menagement_system/Models/StudentMenaModel.dart';
+import 'package:student_menagement_system/Screens/Bottom_Navigation.dart';
 import 'package:student_menagement_system/Screens/Detailes.dart';
 import 'package:student_menagement_system/Services/API_service.dart';
 import 'package:student_menagement_system/Widgets/student_card.dart';
@@ -19,74 +20,105 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+    Color primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            "Students",
-            style: TextStyle(
-              color: Theme.of(context).textTheme.bodyLarge?.color,
-            ),
-          ),
-        ),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      ),
-      body: FutureBuilder<List<Studentmodel>>(
-        future: apiService.fechStudent(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<Studentmodel> student = snapshot.data!;
-            return ListView.builder(
-              itemCount: student.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: GestureDetector(
-                    onTap: () async {
-                      var result = await Get.to(
-                        () => DetailesScreen(
-                          id: student[index].id,
-                          Student: student[index],
-                          name: student[index].name,
-                          email: student[index].email,
-                          phone: student[index].phone,
-                          age: student[index].age,
-                          createdAt: student[index].createdAt,
-                          gender: student[index].gender,
-                          cource: student[index].cource,
-                          semester: student[index].semester,
-                          city: student[index].city,
-                          isActive: student[index].isActive,
-                          profileImage: student[index].profileImage,
-                        ),
-                      );
-                      if (result == "deleted") {
-                        setState(() {});
-                        Get.snackbar(
-                          "Success",
-                          "Student deleted successfully",
-                          snackPosition: SnackPosition.BOTTOM,
 
-                          colorText: Colors.white,
-                        );
-                      }
-                    },
-                    child: StudentCard(
-                      name: student[index].name,
-                      cource: student[index].cource,
-                      semester: student[index].semester,
-                      city: student[index].city,
-                      isActive: student[index].isActive,
-                      profileImage: student[index].profileImage,
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 50, bottom: 20),
+            decoration: BoxDecoration(
+              color: primaryColor,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(24),
+                bottomRight: Radius.circular(24),
+              ),
+            ),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      "Home Screen",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                );
+                ),
+                const SizedBox(width: 48),
+              ],
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder<List<Studentmodel>>(
+              future: apiService.fechStudent(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<Studentmodel> student = snapshot.data!;
+                  return ListView.builder(
+                    itemCount: student.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: GestureDetector(
+                          onTap: () async {
+                            var result = await Get.to(
+                              () => DetailesScreen(
+                                id: student[index].id,
+                                Student: student[index],
+                                name: student[index].name,
+                                email: student[index].email,
+                                phone: student[index].phone,
+                                age: student[index].age,
+                                createdAt: student[index].createdAt,
+                                gender: student[index].gender,
+                                cource: student[index].cource,
+                                semester: student[index].semester,
+                                city: student[index].city,
+                                isActive: student[index].isActive,
+                                profileImage: student[index].profileImage,
+                              ),
+                            );
+                            if (result == "deleted") {
+                              setState(() {});
+                              Get.snackbar(
+                                "Success",
+                                "Student deleted successfully",
+                                snackPosition: SnackPosition.BOTTOM,
+
+                                colorText: Colors.white,
+                              );
+                              Get.to(BottomNavigationScreen());
+                            }
+                          },
+                          child: StudentCard(
+                            name: student[index].name,
+                            cource: student[index].cource,
+                            semester: student[index].semester,
+                            city: student[index].city,
+                            isActive: student[index].isActive,
+                            profileImage: student[index].profileImage,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
               },
-            );
-          }
-          return Center(child: CircularProgressIndicator());
-        },
+            ),
+          ),
+        ],
       ),
     );
   }

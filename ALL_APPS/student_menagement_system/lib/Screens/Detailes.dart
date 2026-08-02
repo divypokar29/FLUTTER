@@ -45,7 +45,11 @@ class _DetailesScreenState extends State<DetailesScreen> {
   @override
   Widget build(BuildContext context) {
     final hintColor = Theme.of(context).hintColor;
-    DateTime joinDate = DateTime.parse(widget.createdAt!);
+    DateTime? joinDate;
+
+    if (widget.createdAt != null && widget.createdAt!.isNotEmpty) {
+      joinDate = DateTime.tryParse(widget.createdAt!);
+    }
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -74,10 +78,8 @@ class _DetailesScreenState extends State<DetailesScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ClipOval(
-                          child:
-                              (widget.profileImage != null &&
-                                  widget.profileImage!.isNotEmpty &&
-                                  widget.profileImage != "null")
+                          child: (widget.profileImage != null &&
+ widget.profileImage!.isNotEmpty)
                               ? Image.network(
                                   widget.profileImage!,
                                   height: 100,
@@ -302,7 +304,9 @@ class _DetailesScreenState extends State<DetailesScreen> {
                           Text("Joined on "),
                           Spacer(),
                           Text(
-                            "${joinDate.day}/${joinDate.month}/${joinDate.year}",
+                            joinDate != null
+                                ? "${joinDate.day}/${joinDate.month}/${joinDate.year}"
+                                : "N/A",
                           ),
                           SizedBox(width: 25),
                         ],

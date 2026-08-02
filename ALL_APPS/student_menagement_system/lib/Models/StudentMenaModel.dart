@@ -56,7 +56,7 @@ class Studentmodel {
       gender: json["gender"],
       city: json["city"],
       age: json["age"],
-      profileImage: json["profileImage"],
+      profileImage: json["profileImage"] ,
       isActive: json["isActive"],
     );
   }

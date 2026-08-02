@@ -5,17 +5,17 @@ class DarkTheme {
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xff121212),
 
-    primaryColor: const Color(0xff10b981),
+    primaryColor: const Color(0xFFF97316),
 
     cardColor: const Color(0xff1e1e1e),
 
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xff10b981),
+      backgroundColor: Color(0xFFF97316),
       foregroundColor: Colors.white,
     ),
 
     colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xff10b981),
+      seedColor: const Color(0xFFF97316),
       brightness: Brightness.dark,
     ),
   );
