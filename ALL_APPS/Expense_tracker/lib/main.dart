@@ -32,45 +32,146 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           themeMode: currentMode,
           theme: ThemeData(
+            useMaterial3: true,
             brightness: Brightness.light,
-            scaffoldBackgroundColor: const Color(0xfff8fafc),
-            primaryColor: const Color(0xff10b981),
+
+            primaryColor: const Color(0xff10B981),
+
+            scaffoldBackgroundColor: const Color(0xffF8FAFC),
+
             colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff10b981),
+              seedColor: const Color(0xff10B981),
               brightness: Brightness.light,
             ),
+
             cardColor: Colors.white,
+
             appBarTheme: const AppBarTheme(
-              backgroundColor: Color(0xff10b981),
+              backgroundColor: Color(0xff10B981),
+              foregroundColor: Colors.white,
+              elevation: 0,
+              centerTitle: true,
+            ),
+
+            cardTheme: CardThemeData(
+              color: Colors.white,
+              elevation: 5,
+              shadowColor: Colors.black12,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+            ),
+
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: Color(0xff10B981),
               foregroundColor: Colors.white,
             ),
+
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              backgroundColor: Colors.black,
-              selectedItemColor: Color(0xff10b981),
-              unselectedItemColor: Colors.grey,
+              backgroundColor: Colors.white,
+              selectedItemColor: Color(0xff10B981),
+              unselectedItemColor: Colors.black,
               type: BottomNavigationBarType.fixed,
-              elevation: 10,
+              elevation: 8,
+            ),
+
+            dividerColor: Colors.grey,
+
+            textTheme: const TextTheme(
+              displayLarge: TextStyle(color: Colors.black),
+              displayMedium: TextStyle(color: Colors.black),
+              displaySmall: TextStyle(color: Colors.black),
+
+              headlineLarge: TextStyle(color: Colors.black),
+              headlineMedium: TextStyle(color: Colors.black),
+              headlineSmall: TextStyle(color: Colors.black),
+
+              titleLarge: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              titleMedium: TextStyle(color: Colors.black),
+              titleSmall: TextStyle(color: Colors.black54),
+
+              bodyLarge: TextStyle(color: Colors.black),
+              bodyMedium: TextStyle(color: Colors.black87),
+              bodySmall: TextStyle(color: Colors.black54),
+
+              labelLarge: TextStyle(color: Colors.black),
+              labelMedium: TextStyle(color: Colors.black54),
+              labelSmall: TextStyle(color: Colors.black45),
             ),
           ),
+
           darkTheme: ThemeData(
+            useMaterial3: true,
             brightness: Brightness.dark,
+
+            primaryColor: const Color(0xff10B981),
+
             scaffoldBackgroundColor: const Color(0xff121212),
-            primaryColor: const Color(0xff10b981),
+
             colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff10b981),
+              seedColor: const Color(0xff10B981),
               brightness: Brightness.dark,
             ),
-            cardColor: const Color(0xff1e1e1e),
+
+            cardColor: const Color(0xff1E1E1E),
+
             appBarTheme: const AppBarTheme(
-              backgroundColor: Color(0xff10b981),
+              backgroundColor: Color(0xff10B981),
+              foregroundColor: Colors.white,
+              elevation: 0,
+              centerTitle: true,
+            ),
+
+            cardTheme: CardThemeData(
+              color: const Color(0xff1E1E1E),
+              elevation: 5,
+              shadowColor: Colors.black54,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+            ),
+
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: Color(0xff10B981),
               foregroundColor: Colors.white,
             ),
+
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
               backgroundColor: Color(0xff1A1A1A),
-              selectedItemColor: Color(0xff10b981),
+              selectedItemColor: Color(0xff10B981),
               unselectedItemColor: Colors.grey,
               type: BottomNavigationBarType.fixed,
-              elevation: 10,
+              elevation: 8,
+            ),
+
+            dividerColor: Colors.white24,
+
+            textTheme: const TextTheme(
+              displayLarge: TextStyle(color: Colors.white),
+              displayMedium: TextStyle(color: Colors.white),
+              displaySmall: TextStyle(color: Colors.white),
+
+              headlineLarge: TextStyle(color: Colors.white),
+              headlineMedium: TextStyle(color: Colors.white),
+              headlineSmall: TextStyle(color: Colors.white),
+
+              titleLarge: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+              titleMedium: TextStyle(color: Colors.white),
+              titleSmall: TextStyle(color: Colors.white70),
+
+              bodyLarge: TextStyle(color: Colors.white),
+              bodyMedium: TextStyle(color: Colors.white70),
+              bodySmall: TextStyle(color: Colors.white60),
+
+              labelLarge: TextStyle(color: Colors.white),
+              labelMedium: TextStyle(color: Colors.white70),
+              labelSmall: TextStyle(color: Colors.white60),
             ),
           ),
           home: isLoggedIn ? BottomNavigationWidget() : LoginPage(),

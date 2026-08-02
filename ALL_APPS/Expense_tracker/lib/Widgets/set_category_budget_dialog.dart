@@ -47,31 +47,50 @@ class _SetCategoryBudgetDialogState extends State<SetCategoryBudgetDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xfff8fafc),
+      backgroundColor: Theme.of(context).cardColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Set Category Budget",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
                 value: _selectedCategory,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Theme.of(context).cardColor,
+                  labelStyle: TextStyle(color: Theme.of(context).hintColor),
                   labelText: "Category",
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).dividerColor,
+                    ),
+                  ),
+
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff10B981), width: 2),
                   ),
                 ),
                 items:
                     _categories
-                        .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                        .map(
+                          (c) => DropdownMenuItem(
+                            value: c,
+                            child: Text(
+                              c,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        )
                         .toList(),
                 onChanged: (value) async {
                   setState(() => _selectedCategory = value);
@@ -83,6 +102,8 @@ class _SetCategoryBudgetDialogState extends State<SetCategoryBudgetDialog> {
                 controller: _amountController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Theme.of(context).cardColor,
                   hintText: "Enter amount",
                   labelText: "Budget",
                   border: OutlineInputBorder(
@@ -101,6 +122,8 @@ class _SetCategoryBudgetDialogState extends State<SetCategoryBudgetDialog> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     backgroundColor: const Color(0xff10b981),
+                    elevation: 0,
+                    minimumSize: const Size(double.infinity, 50),
                   ),
                   child:
                       _saving

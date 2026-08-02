@@ -38,24 +38,32 @@ class _TransactionCardState extends State<TransactionCard> {
               MaterialPageRoute(builder: (context) => UpdateTransaction()),
             ),
         child: Card(
-          color: Colors.white,
-          elevation: 2,
+          shadowColor: Colors.black26,
+          color: Theme.of(context).cardColor,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+
           child: Container(
-            height: 90,
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            height: 95,
+            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
             child: Row(
               children: [
                 CircleAvatar(
                   radius: 28,
                   backgroundColor:
                       widget.type == "Income"
-                          ? Colors.green.shade100
-                          : Colors.red.shade100,
+                          ? const Color(0xffDCFCE7)
+                          : const Color(0xffFEE2E2),
                   child: Icon(
                     widget.type == "Income"
                         ? Icons.arrow_upward
                         : Icons.arrow_downward,
-                    color: widget.type == "Income" ? Colors.green : Colors.red,
+                    color:
+                        widget.type == "Income"
+                            ? const Color(0xff10B981)
+                            : Colors.redAccent,
                     size: 30,
                   ),
                 ),
@@ -69,15 +77,20 @@ class _TransactionCardState extends State<TransactionCard> {
                     children: [
                       Text(
                         widget.title ?? "",
-                        style: const TextStyle(
-                          fontSize: 17,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
+                          fontSize: 17,
                         ),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         widget.date ?? "",
-                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                        style: TextStyle(
+                          color: Theme.of(context).hintColor,
+                          fontSize: 13,
+                        ),
                       ),
                     ],
                   ),
@@ -86,9 +99,12 @@ class _TransactionCardState extends State<TransactionCard> {
                 Text(
                   "${widget.type == "Income" ? "+" : "-"}${widget.amount}",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 19,
                     fontWeight: FontWeight.bold,
-                    color: widget.type == "Income" ? Colors.green : Colors.red,
+                    color:
+                        widget.type == "Income"
+                            ? const Color(0xff10B981)
+                            : Colors.redAccent,
                   ),
                 ),
               ],

@@ -114,22 +114,16 @@ class _ReportScreenState extends State<ReportScreen> {
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    const Text(
+                    Text(
                       "Expense by Category",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 12),
                     _buildPieChartCard(),
                     const SizedBox(height: 28),
-                    const Text(
+                    Text(
                       "Income vs Expense (Monthly)",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 12),
                     _buildBarChartCard(),
@@ -141,11 +135,16 @@ class _ReportScreenState extends State<ReportScreen> {
 
   Widget _buildPieChartCard() {
     if (_expenseByCategory.isEmpty) {
-      return const Card(
-        color: Colors.white,
+      return Card(
+        color: Theme.of(context).cardColor,
         child: Padding(
           padding: EdgeInsets.all(24),
-          child: Center(child: Text("No expense data yet.")),
+          child: Center(
+            child: Text(
+              "No expense data yet.",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
         ),
       );
     }
@@ -154,7 +153,9 @@ class _ReportScreenState extends State<ReportScreen> {
     final total = _expenseByCategory.values.fold(0.0, (a, b) => a + b);
 
     return Card(
-      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 3,
+      color: Theme.of(context).cardColor,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -165,19 +166,20 @@ class _ReportScreenState extends State<ReportScreen> {
                 PieChartData(
                   sectionsSpace: 2,
                   centerSpaceRadius: 40,
+                  centerSpaceColor: Theme.of(context).cardColor,
                   sections: List.generate(categories.length, (i) {
                     final value = _expenseByCategory[categories[i]]!;
                     final percent = total > 0 ? (value / total * 100) : 0;
                     return PieChartSectionData(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).cardColor,
+                        width: 1,
+                      ),
                       color: _categoryColors[i % _categoryColors.length],
                       value: value,
                       title: "${percent.toStringAsFixed(0)}%",
                       radius: 70,
-                      titleStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      titleStyle: Theme.of(context).textTheme.bodySmall,
                     );
                   }),
                 ),
@@ -215,7 +217,7 @@ class _ReportScreenState extends State<ReportScreen> {
     final now = DateTime.now();
     final currentLabel = "${_monthNames[now.month]} ${now.year}";
 
-    // Find current month's data, or default to zero if no transactions yet
+    
     final selected = _monthlyData.firstWhere(
       (m) => m.label == currentLabel,
       orElse: () => MonthlyData(label: currentLabel),
@@ -227,21 +229,16 @@ class _ReportScreenState extends State<ReportScreen> {
     final double chartMaxY = rawMax == 0 ? 100.0 : rawMax;
 
     return Card(
-      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 3,
+      color: Theme.of(context).cardColor,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ dropdown removed — just show current month/year as text
-            Text(
-              currentLabel,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
+           
+            Text(currentLabel, style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 20),
 
             SizedBox(
@@ -259,9 +256,9 @@ class _ReportScreenState extends State<ReportScreen> {
                         getTitlesWidget: (value, meta) {
                           return Text(
                             _formatAxisValue(value),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 11,
-                              color: Colors.black54,
+                              color: Theme.of(context).hintColor,
                             ),
                           );
                         },
@@ -290,16 +287,16 @@ class _ReportScreenState extends State<ReportScreen> {
                               children: [
                                 Text(
                                   label,
-                                  style: const TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: (Theme.of(
+                                        context,
+                                      ).textTheme.bodyMedium)
+                                      ?.copyWith(fontWeight: FontWeight.w600),
                                 ),
                                 Text(
                                   "₹ ${amount.toStringAsFixed(0)}",
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black54,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Theme.of(context).hintColor,
                                   ),
                                 ),
                               ],
@@ -315,6 +312,12 @@ class _ReportScreenState extends State<ReportScreen> {
                     show: true,
                     drawVerticalLine: false,
                     horizontalInterval: chartMaxY / 3,
+                    getDrawingHorizontalLine: (value) {
+                      return FlLine(
+                        color: Theme.of(context).dividerColor,
+                        strokeWidth: 1,
+                      );
+                    },
                   ),
                   barGroups: [
                     BarChartGroupData(

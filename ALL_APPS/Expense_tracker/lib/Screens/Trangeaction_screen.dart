@@ -46,16 +46,10 @@ class _TrangeactionScreenState extends State<TrangeactionScreen> {
         appBar: AppBar(
           backgroundColor: Color(0xff10b981),
           title: Text("Transactions", style: TextStyle(color: Colors.white)),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.search),
-            ),
-          ],
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(48),
             child: Material(
-              color: Colors.white, // Background color of TabBar
+              color: Theme.of(context).cardColor,
               child: TabBar(
                 labelColor: Colors.green,
                 unselectedLabelColor: const Color.fromARGB(255, 114, 114, 114),

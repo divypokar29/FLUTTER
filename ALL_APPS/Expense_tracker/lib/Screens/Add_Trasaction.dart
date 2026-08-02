@@ -77,6 +77,8 @@ class _AddExpensState extends State<AddExpens> {
                 child: TextField(
                   controller: _titlecontroller,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Theme.of(context).cardColor,
                     labelText: "Title",
                     hintText: "Enter title",
                     border: OutlineInputBorder(
@@ -92,12 +94,18 @@ class _AddExpensState extends State<AddExpens> {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1),
+                    color: Theme.of(context).cardColor,
+                    border: Border.all(
+                      color: Theme.of(context).dividerColor,
+                      width: 1,
+                    ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: DropdownButtonFormField<String>(
                     value: selectedType,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Theme.of(context).cardColor,
                       labelText: selectedType ?? "Select Type",
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -125,6 +133,8 @@ class _AddExpensState extends State<AddExpens> {
                 child: TextField(
                   controller: _amountController,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Theme.of(context).cardColor,
                     labelText: "Amount",
                     hintText: "Enter Amount",
                     border: OutlineInputBorder(
@@ -140,12 +150,18 @@ class _AddExpensState extends State<AddExpens> {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1),
+                    color: Theme.of(context).cardColor,
+                    border: Border.all(
+                      color: Theme.of(context).dividerColor,
+                      width: 1,
+                    ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: DropdownButtonFormField<String>(
                     value: selectedCategory,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Theme.of(context).cardColor,
                       labelText: selectedCategory ?? "Category",
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -178,6 +194,8 @@ class _AddExpensState extends State<AddExpens> {
                   readOnly: true,
                   onTap: _selectDate,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Theme.of(context).cardColor,
                     labelText: "Date",
                     hintText: "Select Date",
                     suffixIcon: Icon(Icons.calendar_today),
@@ -192,7 +210,9 @@ class _AddExpensState extends State<AddExpens> {
                 child: TextField(
                   controller: _paymetcontroller,
                   decoration: InputDecoration(
-                    labelText: "Payment Meth",
+                    filled: true,
+                    fillColor: Theme.of(context).cardColor,
+                    labelText: "Payment Method",
                     hintText: "Enter category",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -206,6 +226,8 @@ class _AddExpensState extends State<AddExpens> {
                   controller: _notecontroller,
                   maxLines: 2,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Theme.of(context).cardColor,
                     labelText: "Note",
                     hintText: "Enter Note",
                     border: OutlineInputBorder(
@@ -226,7 +248,9 @@ class _AddExpensState extends State<AddExpens> {
                           side: BorderSide(color: Color(0xff10b981)),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor: Colors.white,
+                        backgroundColor: Theme.of(context).cardColor,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onSurface,
                       ),
                       onPressed: () {},
                       child: Text("Cancel"),
@@ -237,18 +261,16 @@ class _AddExpensState extends State<AddExpens> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        backgroundColor: Color(0xff10b981),
+
+                        backgroundColor: const Color(0xff10B981),
+                        foregroundColor: Colors.white,
                       ),
-                      onPressed: () {
-                        savData();
-                        setState(() {
-                          Navigator.pop(context);
-                        });
+                      onPressed: () async {
+                        await savData();
+
+                        Navigator.pop(context);
                       },
-                      child: Text(
-                        "Save Expense",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      child: Text("Save Expense"),
                     ),
                   ],
                 ),

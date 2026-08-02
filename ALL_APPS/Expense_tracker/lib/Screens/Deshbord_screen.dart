@@ -1,6 +1,7 @@
 import 'package:expense_tracker/Database/Database_helper.dart';
 import 'package:expense_tracker/Models/Trangeaction_model.dart';
 import 'package:expense_tracker/Screens/Add_Trasaction.dart';
+import 'package:expense_tracker/Screens/Trangeaction_screen.dart';
 import 'package:expense_tracker/Widgets/Trangeaction_card.dart';
 import 'package:flutter/material.dart';
 
@@ -77,6 +78,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
     viewgetdata();
     showIncome();
     showExpense();
+    viewBudget();
   }
 
   Future<void> _refreshDashboard() async {
@@ -94,7 +96,13 @@ class _DashbordscreenState extends State<Dashbordscreen> {
         child: Column(
           children: [
             Container(
-              color: Color(0xff10b981),
+              decoration: const BoxDecoration(
+                color: Color(0xff10b981),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
               height: 250,
               width: MediaQuery.of(context).size.width,
               child: Padding(
@@ -105,7 +113,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    Text(   
                       "Deshbord",
                       style: TextStyle(
                         fontSize: 25,
@@ -132,7 +140,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Card(
-                    color: Color(0xffffffff),
+                    color: Theme.of(context).cardColor,
                     child: Container(
                       height: 120,
                       width: 180,
@@ -163,7 +171,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                     ),
                   ),
                   Card(
-                    color: Color(0xffffffff),
+                    color: Theme.of(context).cardColor,
                     child: Container(
                       height: 120,
                       width: 180,
@@ -199,7 +207,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Card(
-                    color: Color(0xffffffff),
+                    color: Theme.of(context).cardColor,
                     child: Container(
                       height: 120,
                       width: 180,
@@ -230,7 +238,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                     ),
                   ),
                   Card(
-                    color: Color(0xffffffff),
+                    color: Theme.of(context).cardColor,
                     child: Container(
                       height: 120,
                       width: 180,
@@ -261,12 +269,7 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                                   "Used",
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: const Color.fromARGB(
-                                      255,
-                                      135,
-                                      134,
-                                      134,
-                                    ),
+                                    color: Theme.of(context).hintColor,
                                   ),
                                 ),
                               ],
@@ -288,16 +291,26 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                     "Recent Transactions",
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "See All",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TrangeactionScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -329,13 +342,11 @@ class _DashbordscreenState extends State<Dashbordscreen> {
                 itemCount: _trangectionList.length,
               ),
             ),
-            // pages[currentindex]
           ],
         ),
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xff10b981),
         onPressed: () async {
           await Navigator.push(
             context,

@@ -20,29 +20,11 @@ class MoreScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 12),
         children: [
           _sectionTitle("Preferences"),
-          _menuTile(context, Icons.category_outlined, "Manage Categories", () {
-            _comingSoon(context, "Manage Categories");
-          }),
-          _menuTile(context, Icons.currency_rupee, "Currency", () {
-            _comingSoon(context, "Currency");
-          }),
+
           _darkModeTile(),
 
           _sectionTitle("Data"),
-          _menuTile(
-            context,
-            Icons.file_download_outlined,
-            "Export Data (CSV/PDF)",
-            () {
-              _comingSoon(context, "Export Data");
-            },
-          ),
-          _menuTile(context, Icons.backup_outlined, "Backup & Restore", () {
-            _comingSoon(context, "Backup & Restore");
-          }),
-          _menuTile(context, Icons.repeat, "Recurring Transactions", () {
-            _comingSoon(context, "Recurring Transactions");
-          }),
+
           _menuTile(
             context,
             Icons.delete_outline,
@@ -51,21 +33,8 @@ class MoreScreen extends StatelessWidget {
             color: Colors.red,
           ),
 
-          _sectionTitle("Security"),
-          _menuTile(context, Icons.lock_outline, "App Lock", () {
-            _comingSoon(context, "App Lock");
-          }),
-          _menuTile(context, Icons.notifications_outlined, "Budget Alerts", () {
-            _comingSoon(context, "Budget Alerts");
-          }),
-
           _sectionTitle("About"),
-          _menuTile(context, Icons.star_outline, "Rate the App", () {
-            _comingSoon(context, "Rate the App");
-          }),
-          _menuTile(context, Icons.share_outlined, "Share App", () {
-            _comingSoon(context, "Share App");
-          }),
+
           _menuTile(
             context,
             Icons.info_outline,
@@ -96,32 +65,36 @@ class MoreScreen extends StatelessWidget {
     IconData icon,
     String title,
     VoidCallback onTap, {
-    Color color = Colors.black87,
+    Color? color,
   }) {
     return Card(
-      color: Colors.white,
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      elevation: 0,
+      color: Theme.of(context).cardColor,
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Colors.grey.shade200),
+        side: BorderSide(color: Theme.of(context).dividerColor),
       ),
       child: ListTile(
-        leading: Icon(icon, color: color),
+        leading: Icon(
+          icon,
+          color: color ?? Theme.of(context).colorScheme.onSurface,
+        ),
         title: Text(
           title,
-          style: TextStyle(color: color, fontWeight: FontWeight.w500),
+          style: TextStyle(
+            color: color ?? Theme.of(context).colorScheme.onSurface,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-        trailing: const Icon(Icons.chevron_right, size: 20, color: Colors.grey),
+        trailing: Icon(
+          Icons.chevron_right,
+          size: 20,
+          color: Theme.of(context).hintColor,
+        ),
         onTap: onTap,
       ),
     );
-  }
-
-  void _comingSoon(BuildContext context, String feature) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text("$feature — coming soon")));
   }
 
   void _confirmClearData(BuildContext context) {
@@ -129,6 +102,7 @@ class MoreScreen extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
+            backgroundColor: Theme.of(context).cardColor,
             title: const Text("Clear All Data?"),
             content: const Text(
               "This will permanently delete all your transactions and budgets. This action cannot be undone.",
@@ -170,8 +144,11 @@ class MoreScreen extends StatelessWidget {
         color: Color(0xff10b981),
         size: 40,
       ),
-      children: const [
-        Text("A simple app to track your income, expenses, and budgets."),
+      children: [
+        Text(
+          "A simple app to track your income, expenses, and budgets.",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ],
     );
   }

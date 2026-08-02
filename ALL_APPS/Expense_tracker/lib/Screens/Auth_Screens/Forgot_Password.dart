@@ -76,7 +76,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 "Forgot Password?",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
               ),
-              //Text("Login to your account", style: TextStyle()),
+              
               Image.asset("assets/Forgot_image.png", height: 250, width: 250),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 18),

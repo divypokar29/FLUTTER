@@ -79,21 +79,25 @@ class CategoryBudgetSectionState extends State<CategoryBudgetSection> {
     if (_loading) {
       return const Padding(
         padding: EdgeInsets.all(24),
-        child: Center(child: CircularProgressIndicator()),
+        child: Center(
+          child: CircularProgressIndicator(color: const Color(0xff10B981)),
+        ),
       );
     }
 
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).cardColor,
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       margin: const EdgeInsets.all(12),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Budget by Category",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
             ..._items.map((item) {
@@ -108,13 +112,14 @@ class CategoryBudgetSectionState extends State<CategoryBudgetSection> {
                       children: [
                         Text(
                           item.category,
-                          style: const TextStyle(fontWeight: FontWeight.w600),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                         Text(
                           item.hasBudget
                               ? "₹ ${item.spent.toStringAsFixed(0)} / ₹ ${item.budget.toStringAsFixed(0)}"
                               : "₹ ${item.spent.toStringAsFixed(0)} spent",
-                          style: const TextStyle(color: Colors.black54),
+                          style: TextStyle(color: Theme.of(context).hintColor),
                         ),
                       ],
                     ),
@@ -124,9 +129,9 @@ class CategoryBudgetSectionState extends State<CategoryBudgetSection> {
                       child: LinearProgressIndicator(
                         value: item.progress,
                         minHeight: 10,
-                        backgroundColor: Colors.grey.shade300,
+                        backgroundColor: Theme.of(context).dividerColor,
                         valueColor: AlwaysStoppedAnimation(
-                          item.hasBudget ? color : Colors.grey,
+                          item.hasBudget ? color : Theme.of(context).hintColor,
                         ),
                       ),
                     ),
@@ -143,7 +148,7 @@ class CategoryBudgetSectionState extends State<CategoryBudgetSection> {
                         color:
                             item.hasBudget
                                 ? (item.remaining >= 0
-                                    ? const Color(0xff10b981)
+                                    ? const Color(0xff10B981)
                                     : Colors.red)
                                 : Colors.grey,
                       ),
