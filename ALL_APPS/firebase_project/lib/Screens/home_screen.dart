@@ -1,3 +1,4 @@
+import 'package:firebase_project/Screens/add_categoty.dart';
 import 'package:firebase_project/Screens/add_product.dart';
 import 'package:firebase_project/Screens/product_detailes_screen.dart';
 import 'package:firebase_project/models/ProductModel.dart';
@@ -37,6 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddCategoty()),
+              );
+            },
+            child: Text("Add category"),
           ),
           Expanded(
             child: StreamBuilder<List<Productmodel>>(

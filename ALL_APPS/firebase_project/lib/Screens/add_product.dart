@@ -1,5 +1,7 @@
+import 'package:firebase_project/models/CategoryModel.dart';
 import 'package:firebase_project/models/ProductModel.dart';
 import 'package:firebase_project/Screens/home_screen.dart';
+import 'package:firebase_project/service/Category_service.dart';
 import 'package:firebase_project/service/product_service.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,9 @@ class _AddProductState extends State<AddProduct> {
   TextEditingController _qtyController = TextEditingController();
   TextEditingController _descreptionController = TextEditingController();
   ProductService _productService = ProductService();
+  CategoryService _categoryService = CategoryService();
 
+  String? selectedCategory;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,18 +80,48 @@ class _AddProductState extends State<AddProduct> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(12),
-              child: TextField(
-                controller: _categoryController,
-                decoration: InputDecoration(
-                  hintText: "Enter Category",
-                  labelText: "Category",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+            StreamBuilder<List<CategoryModel>>(
+              stream: _categoryService.fetchCategory(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (snapshot.hasError) {
+                  return const Text("Something went wrong");
+                }
+
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text("No Category Found");
+                }
+
+                final categories = snapshot.data!;
+
+                return Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: DropdownButtonFormField<String>(
+                    value: selectedCategory,
+                    decoration: InputDecoration(
+                      labelText: "Category",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    items: categories.map((category) {
+                      return DropdownMenuItem<String>(
+                        value: category.categoryName,
+                        child: Text(category.categoryName!),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCategory = value;
+                        _categoryController.text = value!;
+                      });
+                    },
                   ),
-                ),
-              ),
+                );
+              },
             ),
             Padding(
               padding: EdgeInsets.all(12),
