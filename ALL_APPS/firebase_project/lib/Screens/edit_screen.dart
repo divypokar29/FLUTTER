@@ -1,3 +1,7 @@
+import 'package:firebase_project/models/CategoryModel.dart';
+import 'package:firebase_project/models/SuplierModel.dart';
+import 'package:firebase_project/service/Category_service.dart';
+import 'package:firebase_project/service/Suplier_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_project/models/ProductModel.dart';
 import 'package:firebase_project/Screens/home_screen.dart';
@@ -17,7 +21,14 @@ class _EditScreenState extends State<EditScreen> {
   TextEditingController _priceController = TextEditingController();
   TextEditingController _qtyController = TextEditingController();
   TextEditingController _descreptionController = TextEditingController();
+  TextEditingController _suplierController = TextEditingController();
+
+  SuplierService _suplierService = SuplierService();
   ProductService _productService = ProductService();
+  CategoryService _categoryService = CategoryService();
+
+  String? selectedCategory;
+  String? selectedSuplier;
 
   @override
   void initState() {
@@ -28,6 +39,8 @@ class _EditScreenState extends State<EditScreen> {
     _priceController.text = widget.Product.productPrice.toString();
     _qtyController.text = widget.Product.productqty.toString();
     _descreptionController.text = widget.Product.description.toString();
+    selectedCategory = widget.Product.productcategory;
+    selectedSuplier = widget.Product.suplier;
   }
 
   @override
@@ -91,18 +104,91 @@ class _EditScreenState extends State<EditScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: TextField(
-                controller: _categoryController,
-                decoration: InputDecoration(
-                  hintText: "Enter Category",
-                  labelText: "Category",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+            StreamBuilder<List<CategoryModel>>(
+              stream: _categoryService.fetchCategory(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (snapshot.hasError) {
+                  return const Text("Something went wrong");
+                }
+
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text("No Category Found");
+                }
+
+                final categories = snapshot.data!;
+
+                return Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: DropdownButtonFormField<String>(
+                    value: selectedCategory,
+                    decoration: InputDecoration(
+                      labelText: "Category",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    items: categories.map((category) {
+                      return DropdownMenuItem<String>(
+                        value: category.categoryName,
+                        child: Text(category.categoryName!),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCategory = value;
+                        _categoryController.text = value!;
+                      });
+                    },
                   ),
-                ),
-              ),
+                );
+              },
+            ),
+            StreamBuilder<List<Supliermodel>>(
+              stream: _suplierService.fetchSuplier(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (snapshot.hasError) {
+                  return const Text("Something went wrong");
+                }
+
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text("No Category Found");
+                }
+
+                final supliers = snapshot.data!;
+
+                return Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: DropdownButtonFormField<String>(
+                    value: selectedSuplier,
+                    decoration: InputDecoration(
+                      labelText: "Supliers",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    items: supliers.map((suplier) {
+                      return DropdownMenuItem<String>(
+                        value: suplier.suplierName,
+                        child: Text(suplier.suplierName!),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedSuplier = value;
+                        _suplierController.text = value!;
+                      });
+                    },
+                  ),
+                );
+              },
             ),
             Padding(
               padding: const EdgeInsets.all(12),
@@ -160,6 +246,7 @@ class _EditScreenState extends State<EditScreen> {
                   productPrice: double.parse(_priceController.text.toString()),
                   productqty: int.parse(_qtyController.text.toString()),
                   description: _descreptionController.text.toString(),
+                  suplier: _suplierController.text.toString(),
                 );
                 await _productService.updateProduct(_productModel);
                 Navigator.push(

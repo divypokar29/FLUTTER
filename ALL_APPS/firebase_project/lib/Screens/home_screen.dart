@@ -1,5 +1,6 @@
 import 'package:firebase_project/Screens/add_categoty.dart';
 import 'package:firebase_project/Screens/add_product.dart';
+import 'package:firebase_project/Screens/add_suplier.dart';
 import 'package:firebase_project/Screens/product_detailes_screen.dart';
 import 'package:firebase_project/models/ProductModel.dart';
 import 'package:firebase_project/service/product_service.dart';
@@ -17,11 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF0a1931),
       body: Column(
         children: [
           Container(
             decoration: const BoxDecoration(
-              color: Color(0xff4a6cfc),
+              color: Color(0xff54acbf),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30),
@@ -39,14 +41,106 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddCategoty()),
+                  );
+                },
+                child: Container(
+                  height: 120,
+                  width: 180,
+                  child: Card(
+                    color: Color(0xFF1a3d63),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.category_outlined,
+                            color: const Color.fromARGB(255, 103, 182, 247),
+                          ),
+                          Text(
+                            "Add category",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 103, 182, 247),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddProduct()),
+                  );
+                },
+                child: Container(
+                  height: 120,
+                  width: 180,
+                  child: Card(
+                    color: Color(0xFF1a3d63),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add_shopping_cart_rounded,
+                            color: Color.fromARGB(255, 103, 182, 247),
+                          ),
+                          Text(
+                            "Add Product",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 103, 182, 247),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          InkWell(
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AddCategoty()),
+                MaterialPageRoute(builder: (context) => AddSuplier()),
               );
             },
-            child: Text("Add category"),
+            child: Container(
+              height: 120,
+              width: 180,
+              child: Card(
+                color: Color(0xFF1a3d63),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add_shopping_cart_rounded,
+                        color: Color.fromARGB(255, 103, 182, 247),
+                      ),
+                      Text(
+                        "Add Suplier",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 103, 182, 247),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
           Expanded(
             child: StreamBuilder<List<Productmodel>>(
@@ -73,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                           child: Card(
+                            color: Color(0xFF4A7fa7),
                             child: ListTile(
                               title: Text("${product.productName}"),
                               leading: CircleAvatar(

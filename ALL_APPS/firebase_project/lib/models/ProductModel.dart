@@ -5,6 +5,7 @@ class Productmodel {
   int? productqty;
   double? productPrice;
   String? description;
+  String? suplier;
 
   Productmodel({
     this.id,
@@ -12,7 +13,8 @@ class Productmodel {
     required this.productcategory,
     required this.productPrice,
     required this.productqty,
-    required this.description
+    required this.description,
+    required this.suplier,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,7 +23,8 @@ class Productmodel {
       "productcategory": productcategory,
       "productPrice": productPrice,
       "productqty": productqty,
-      "description" :description,
+      "description": description,
+      "suplier": suplier,
     };
   }
 
@@ -32,7 +35,8 @@ class Productmodel {
       productcategory: map["productcategory"],
       productPrice: (map["productPrice"] as num).toDouble(),
       productqty: (map["productqty"] as num).toInt(),
-      description: map["description"]
+      description: map["description"],
+      suplier: map["suplier"],
     );
   }
 }

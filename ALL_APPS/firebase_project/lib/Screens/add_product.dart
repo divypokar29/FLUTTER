@@ -1,7 +1,9 @@
 import 'package:firebase_project/models/CategoryModel.dart';
 import 'package:firebase_project/models/ProductModel.dart';
 import 'package:firebase_project/Screens/home_screen.dart';
+import 'package:firebase_project/models/SuplierModel.dart';
 import 'package:firebase_project/service/Category_service.dart';
+import 'package:firebase_project/service/Suplier_service.dart';
 import 'package:firebase_project/service/product_service.dart';
 import 'package:flutter/material.dart';
 
@@ -15,13 +17,18 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   TextEditingController _productNameController = TextEditingController();
   TextEditingController _categoryController = TextEditingController();
+  TextEditingController _suplierController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   TextEditingController _qtyController = TextEditingController();
   TextEditingController _descreptionController = TextEditingController();
+
   ProductService _productService = ProductService();
   CategoryService _categoryService = CategoryService();
+  SuplierService _suplierService = SuplierService();
 
   String? selectedCategory;
+  String? selectedSuplier;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +37,7 @@ class _AddProductState extends State<AddProduct> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color(0xff4a6cfc),
+                color: Color(0xff54acbf),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
@@ -123,6 +130,49 @@ class _AddProductState extends State<AddProduct> {
                 );
               },
             ),
+            StreamBuilder<List<Supliermodel>>(
+              stream: _suplierService.fetchSuplier(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (snapshot.hasError) {
+                  return const Text("Something went wrong");
+                }
+
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text("No Category Found");
+                }
+
+                final supliers = snapshot.data!;
+
+                return Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: DropdownButtonFormField<String>(
+                    value: selectedSuplier,
+                    decoration: InputDecoration(
+                      labelText: "Supliers",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    items: supliers.map((suplier) {
+                      return DropdownMenuItem<String>(
+                        value: suplier.suplierName,
+                        child: Text(suplier.suplierName!),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedSuplier = value;
+                        _suplierController.text = value!;
+                      });
+                    },
+                  ),
+                );
+              },
+            ),
             Padding(
               padding: EdgeInsets.all(12),
               child: TextField(
@@ -177,6 +227,7 @@ class _AddProductState extends State<AddProduct> {
                   productPrice: double.parse(_priceController.text.toString()),
                   productqty: int.parse(_qtyController.text.toString()),
                   description: _descreptionController.text.toString(),
+                  suplier: _suplierController.text.toString(),
                 );
                 await _productService.addProduct(_productModel);
                 Navigator.push(
