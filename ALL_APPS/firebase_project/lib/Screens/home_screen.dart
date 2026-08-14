@@ -1,3 +1,4 @@
+import 'package:firebase_project/Screens/add_StockTrangeaction.dart';
 import 'package:firebase_project/Screens/add_categoty.dart';
 import 'package:firebase_project/Screens/add_product.dart';
 import 'package:firebase_project/Screens/add_suplier.dart';
@@ -110,37 +111,76 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddSuplier()),
-              );
-            },
-            child: Container(
-              height: 120,
-              width: 180,
-              child: Card(
-                color: Color(0xFF1a3d63),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add_shopping_cart_rounded,
-                        color: Color.fromARGB(255, 103, 182, 247),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddSuplier()),
+                  );
+                },
+                child: Container(
+                  height: 120,
+                  width: 180,
+                  child: Card(
+                    color: Color(0xFF1a3d63),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add_shopping_cart_rounded,
+                            color: Color.fromARGB(255, 103, 182, 247),
+                          ),
+                          Text(
+                            "Add Suplier",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 103, 182, 247),
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Add Suplier",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 103, 182, 247),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddStocktrangeaction(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 120,
+                  width: 180,
+                  child: Card(
+                    color: Color(0xFF1a3d63),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Color.fromARGB(255, 103, 182, 247),
+                          ),
+                          Text(
+                            "Add Stock",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 103, 182, 247),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: StreamBuilder<List<Productmodel>>(

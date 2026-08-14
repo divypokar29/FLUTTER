@@ -248,7 +248,7 @@ class _EditScreenState extends State<EditScreen> {
                   description: _descreptionController.text.toString(),
                   suplier: _suplierController.text.toString(),
                 );
-                await _productService.updateProduct(_productModel);
+                //await _productService.updateProduct(_productModel);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomeScreen()),

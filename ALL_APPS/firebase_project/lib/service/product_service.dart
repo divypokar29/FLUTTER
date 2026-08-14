@@ -20,16 +20,18 @@ class ProductService {
     await FirebaseFirestore.instance.collection("Product").doc(id).delete();
   }
 
-  Future<void> updateProduct(Productmodel product) async {
+  Future<void> updateProduct(String productId, int quantity) async {
     await FirebaseFirestore.instance
         .collection("Product")
-        .doc(product.id)
-        .update({
-          "productName": product.productName,
-          "productcategory": product.productcategory,
-          "productPrice": product.productPrice,
-          "productqty": product.productqty,
-          "description": product.description,
-        });
+        .doc(productId)
+        .update({"productqty": quantity});
+  }
+
+  Future<int> getCurrentStock(String productId) async {
+    var doc = await FirebaseFirestore.instance
+        .collection("Product")
+        .doc(productId)
+        .get();
+    return doc["productqty"];
   }
 }
